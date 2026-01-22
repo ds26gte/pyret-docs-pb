@@ -10,11 +10,11 @@ Also: Controlling https://getbootstrap.com[Bootstrap Web Framework] elements fro
 The WIP Pollen version of the pyret documentation source is in this
 repo.
 
-(To browse directly in GitHub:
-https://github.com/ds26gte/pyret-docs-pb).
+To browse source directly in GitHub:
+https://github.com/ds26gte/pyret-docs-pb.
 
 The rendered version of the Pollenized Pyret doc is at
-https://ds26gte.github.io/attic/pyret-docs.
+https://ds26gte.github.io/attic/pyret-docs-pb/index.html.
 
 == How
 
