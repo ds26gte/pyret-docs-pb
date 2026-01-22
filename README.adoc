@@ -28,38 +28,14 @@ HTML only, we'll restrict ourselves to HTML. However, our source
 is in `poly` format, so we could go to other output
 formats if needed.
 
-TIP: If we know we're only targeting HTML, we could call our input
-file `lorem.html.pm` instead of `lorem.poly.pm`.
-
-
-Pollen allows multiple input document formats, e.g., HTML,
-Markdown, Pollen Markup. For the most extensibility, we probably
-want Pollen Markup. The input file has extension `.html.pm`. This
-suggests that the input format should be HTML, but we'll add a
-Pollen Racket file link:./pollen.rkt[] to allow for a more forgiving
-input style, e.g., with blank lines signifying paragraph separation,
+We will use the pollen enhancement files from
+https://github.com/ds26gte/pollenboots to allow a more flexible
+input style, viz., with blank lines signifying paragraph separation,
 automatic conversion to smart quotes and dashes, automatic
 creation of external title. (Very likely others as we learn more.)
 
-Also, I'm restricting myself to one input file, but we can add a
-_page tree_ of files with interconnecting nav bars later.
-
-Pollen markup provides all the well-known HTML tags, but with a
-different but easily deducible syntax.  See the various *.poly.pm
-files
-for some examples.
-
-We can use Pollen markup syntax to include classes and other
-attributes. These can be the Bootstrap-provided classes, as long
-as the template file link:./template.html.p[] adds in the Bootstrap-related CSS and JS.
-
-link:./pollen.rkt[] can be used to modify existing tags and create new tags
--- examples of both are provided. Crucial Pollen Racket functions
-are: `define-tag-function`, `default-tag-function`,
-`decode-elements`, and `txexpr`. Ideally we should be able to put
-most of the work on `define-` and `default-tag-function`: the
-former acts like a macro for creating new tags, and the latter
-extracts the original values of tags.
+The file index.ptree is a _page tree_ of the various document
+files, in the preferred order.
 
 == Time
 
