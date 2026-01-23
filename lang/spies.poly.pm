@@ -25,7 +25,7 @@ Spying (at file:///spies.arr:2:0-2:10)
 
 On code.pyret.org, you'll see output like:
 
-◊image[#:scale 0.3 "src/lang/simple-spy.png"]
+◊image[#:scale 0.3 "./simple-spy.png"]
 
 Both of these outputs indicate that the name was ◊tt{x} and the value was
 ◊tt{10}. In the text output, the line and column information is printed (this
@@ -169,17 +169,12 @@ end
 
 The grammar of ◊tt{spy} statements is:
 
-◊bnf['Pyret]{
-SPY: "spy"
-END: "end"
-COLON: ":"
-COMMA: ","
-spy-stmt: SPY [expr] COLON spy-body END
-spy-body: spy-field [COMMA spy-field]*
-spy-field: NAME | NAME COLON binop-expr
+◊ebnf['Pyret]{
+◊nd{spy-stmt}: spy [◊nt{expr}] : ◊nt{spy-body} end
+◊nd{spy-body}: ◊nt{spy-field} [, ◊nt{spy-field}]*
+◊nd{spy-field}: NAME | NAME : ◊nt{binop-expr}
 }
-
-
+  
 ◊section[#:tag "s:spies:rationale"]{Rationale}
 
 Often, when debugging or explaining a program, it's useful to display values
