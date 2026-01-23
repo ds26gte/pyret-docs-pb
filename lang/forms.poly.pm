@@ -976,7 +976,7 @@ Data declarations define a number of related functions for creating and
 manipulating a data type.  Their grammar is:
 
 ◊ebnf['Pyret]{
-◊nd{data-decl}: DATA ◊tmi{NAME} ◊nt{ty-params} COLON
+◊nd{data-decl}: DATA ◊tmi{NAME} ◊nt{ty-params} ◊tm{:}
     ◊nt{data-variant}*
     ◊nt{data-sharing}
     ◊nt{where-clause}
@@ -1134,11 +1134,9 @@ updating.
 
 ◊subsection[#:tag "s:type-decl"]{Type Declarations}
 Pyret provides two means of defining new type names.  
-◊bnf['Pyret]{
-TYPE: "type"
-EQUALS: "="
-type-stmt: TYPE type-decl
-type-decl: NAME ty-params EQUALS ann
+◊ebnf['Pyret]{
+◊nd{type-stmt}: ◊tm{type} ◊nt{type-decl}
+◊nd{type-decl}: ◊tmi{NAME} ◊nt{ty-params} ◊tm{=} ◊nt{ann}
 }
 
 A ◊py-prod{type-stmt} declares an alias to an existing type.  This allows for
@@ -1162,11 +1160,9 @@ example, we might want to build an object-oriented type that encapsulates
 details of its internals.)  To do that we need to specify both a ◊emph{static name} to
 use as annotations to describe our data, and a ◊emph{dynamic brand} to mark the
 data and ensure that we can recognize it again when we see it.
-◊bnf['Pyret]{
-NEWTYPE: "newtype"
-AS: "as"
-newtype-stmt: newtype-decl
-newtype-decl: NEWTYPE NAME AS NAME
+◊ebnf['Pyret]{
+◊nd{newtype-stmt}: ◊nt{newtype-decl}
+◊nd{newtype-decl}: ◊tm{newtype} ◊tmi{NAME} ◊tm{as} ◊tmi{NAME}
 }
 When we write
 ◊examples{
@@ -1919,10 +1915,7 @@ of three things:
 The extend expression consists of an base expression and a list of fields to
 extend it with:
 
-◊bnf['Pyret]{
-             DOT: "."
-             LBRACE: "{"
-             RBRACE: "}"
+◊ebnf['Pyret]{
 ◊nd{extend-expr}: ◊nt{expr} ◊tm{.} ◊tm{◊lbrace[]} ◊nt{fields} ◊tm{◊rbrace[]}
 }
 
@@ -2221,17 +2214,11 @@ rows of data:
 
 A table loading expression constructs a table using a data source and
 zero or more data sanitizers:
-◊bnf['Pyret]{
-LOAD-TABLE: "load-table"
-COLON: ":"
-END: "end"
-SOURCECOLON: "source:"
-SANITIZE: "sanitize"
-USING: "using"
-load-table-expr: LOAD-TABLE COLON table-headers [load-table-specs] END
-load-table-specs: load-table-spec* load-table-spec
-load-table-spec: SOURCECOLON expr
-               | SANITIZE NAME USING expr
+◊ebnf['Pyret]{
+◊nd{load-table-expr}: ◊tm{load-table} ◊tm{:} ◊nt{table-headers} [◊nt{load-table-specs}] ◊tm{end}
+◊nd{load-table-specs}: ◊nt{load-table-spec}* ◊nt{load-table-spec}
+◊nd{load-table-spec}: ◊tm{source:} ◊nt{expr}
+               | ◊tm{sanitize} ◊tmi{NAME} ◊tm{using} ◊nt{expr}
 }
 
 ◊subsection[#:tag "s:reactor-expr"]{Reactor Expressions}
@@ -2257,12 +2244,9 @@ Reactors are described in detail in ◊secref["s:reactors"].
 ◊subsection[#:tag "s:reference-fields"]{Mutable fields}
 Pyret allows creating data definitions whose fields are mutable.  Accordingly,
 it provides syntax for accessing and modifying those fields.
-◊bnf['Pyret]{
-BANG: "!"
-LBRACE: "{"
-RBRACE: "}"
-get-bang-expr: expr BANG NAME
-update-expr: expr BANG ◊tm{◊lbrace[]} fields ◊tm{◊rbrace[]}
+◊ebnf['Pyret]{
+◊nt{get-bang-expr}: ◊nt{expr} ◊tm{!} ◊tmi{NAME}
+◊nt{update-expr}: ◊nt{expr} ◊tm{!} ◊tm{◊lbrace[]} ◊nt{fields} ◊tm{◊rbrace[]}
 }
 
 By analogy with how ◊py-prod{dot-expr} accesses normal fields,
@@ -2316,13 +2300,9 @@ we can write the above example as
 }
 where ◊emph{◊pyret{list} is not a syntactic keyword} in the language.  Instead,
 this is one example of a ◊emph{construction expression}, whose syntax is simply
-◊bnf['Pyret]{
-LBRACK: "["
-RBRACK: "]"
-COLON: ":"
-COMMA: ","
-construct-expr: LBRACK binop-expr COLON construct-args RBRACK
-construct-args: [binop-expr (◊tm{,} binop-expr)*]
+◊ebnf['Pyret]{
+◊nd{construct-expr}: ◊tm{[} ◊nt{binop-expr} ◊tm{:} ◊nt{construct-args} ◊tm{]}
+◊nd{construct-args}: [◊nt{binop-expr} (◊tm{,} ◊nt{binop-expr})*]
 }
 
 Pyret defines several of these constructors for you: lists, sets, arrays, and
@@ -2375,22 +2355,12 @@ definitions in explicit ◊py-prod{user-block-expr}s, but this is sometimes awkw
 read.  Pyret allows for three additional forms that combine bindings with
 expression blocks in a manner that is sometimes more legible:
 
-◊bnf['Pyret]{
-LET: "let"
-LETREC: "letrec"
-TYPE-LET: "type-let"
-COMMA: ","
-BLOCK: "block"
-COLON: ":"
-END: "end"
-EQUALS: "="
-NEWTYPE: "newtype"
-AS: "as"
-multi-let-expr: LET let-or-var (◊tm{,} let-or-var)* [BLOCK] COLON block END
-let-or-var: let-decl | var-decl
-letrec-expr: LETREC let-decl (◊tm{,} let-decl)* [BLOCK] COLON block END
-type-let-expr: TYPE-LET type-let-or-newtype (◊tm{,} type-let-or-newtype)* [BLOCK] COLON END
-type-let-or-newtype: type-decl | newtype-decl
+◊ebnf['Pyret]{
+◊nd{multi-let-expr}: ◊tm{let} ◊nt{let-or-var} (◊tm{,} ◊nt{let-or-var})* [◊tm{block}] ◊tm{:} ◊nt{block} ◊tm{end}
+◊nd{let-or-var}: ◊nt{let-decl} | ◊nt{var-decl}
+◊nd{letrec-expr}: ◊tm{letrec} ◊nt{let-decl} (◊tm{,} ◊nt{let-decl})* [◊tm{block}] ◊tm{:} ◊nt{block} ◊tm{end}
+◊nd{type-let-expr}: ◊tm{type-let} ◊nt{type-let-or-newtype} (◊tm{,} ◊nt{type-let-or-newtype})* [◊tm{block}] ◊tm{:} ◊tm{end}
+◊nd{type-let-or-newtype}: ◊nt{type-decl} | ◊nt{newtype-decl}
 }
 
 These define their bindings only for the scope of the following block.  A
