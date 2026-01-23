@@ -1218,8 +1218,8 @@ The grammar for these contracts looks nearly identical to that of
 relaxed treatment: the outermost set of parentheses are optional.
 
 ◊ebnf['Pyret]{
-◊nt{contract}: ◊tmi{NAME} ◊tm{::} ◊nt{ty-params} ◊nt{ann} | ◊tmi{NAME} ◊tm{::} ◊nt{ty-params} ◊nt{contract-arrow-ann}
-◊nt{contract-arrow-ann}: (◊nt{ann} ◊tm{,})* ◊nt{ann} ◊tm{->} ◊nt{ann} 
+◊nd{contract}: ◊tmi{NAME} ◊tm{::} ◊nt{ty-params} ◊nt{ann} | ◊tmi{NAME} ◊tm{::} ◊nt{ty-params} ◊nt{contract-arrow-ann}
+◊nd{contract-arrow-ann}: (◊nt{ann} ◊tm{,})* ◊nt{ann} ◊tm{->} ◊nt{ann} 
               | ◊tm{(} (◊tmi{NAME} ◊tm{::} ◊nt{ann} ◊tm{,})* ◊tmi{NAME} ◊tm{::} ◊nt{ann} ◊tm{)} ◊tm{->} ◊nt{ann}
 }
 
@@ -1315,7 +1315,7 @@ There are just a few forms that can only appear as statements in ◊tt{block}s
 that aren't declarations:
 
 ◊ebnf['Pyret]{
-◊nt{stmt}: ◊nt{when-stmt} | ◊nt{assign-stmt} | ◊nt{binop-expr}
+◊nd{stmt}: ◊nt{when-stmt} | ◊nt{assign-stmt} | ◊nt{binop-expr}
 }
 
 ◊subsection[#:tag "s:when-stmt"]{When Statements}
@@ -1324,7 +1324,7 @@ A when expression has a single test condition with a corresponding
 block.
 
 ◊ebnf['Pyret]{
-◊nt{when-stmt}: ◊tm{when} ◊nt{binop-expr} [◊tm{block}] ◊tm{::} ◊nt{block} ◊tm{end}
+◊nd{when-stmt}: ◊tm{when} ◊nt{binop-expr} [◊tm{block}] ◊tm{::} ◊nt{block} ◊tm{end}
 }
 
 For example:
@@ -1344,7 +1344,7 @@ Assignment statements have a name on the left, and an expression on the right
 of ◊tt{:=}:
 
 ◊ebnf['Pyret]{
-◊nt{assign-stmt}: ◊tmi{NAME} ◊tm{:=} ◊nt{binop-expr}
+◊nd{assign-stmt}: ◊tmi{NAME} ◊tm{:=} ◊nt{binop-expr}
 }
 
 If ◊tt{NAME} is not declared in the same or an outer scope of the assignment
@@ -1634,7 +1634,7 @@ Pyret just does not provide syntactic sugar to help in this case
 ◊index["^ (Chained Application)"]{}
 
 ◊ebnf['Pyret]{
-◊nt{chain-app-expr}: ◊nt{binop-expr} ◊tm{^} ◊nt{binop-expr}
+◊nd{chain-app-expr}: ◊nt{binop-expr} ◊tm{^} ◊nt{binop-expr}
 }
 
 The expression ◊pyret{e1 ^ e2} is equivalent to ◊pyret{e2(e1)}.  It's just
@@ -1717,7 +1717,7 @@ is a series of expressions joined by binary operators. An expression itself
 is also a binary operator expression.
 
 ◊ebnf['Pyret]{
-◊nt{binop-expr}: ◊nt{expr} (◊tmi{BINOP} ◊nt{expr})*
+◊nd{binop-expr}: ◊nt{expr} (◊tmi{BINOP} ◊nt{expr})*
 }
 
 Pyret supports the following operations, shown by example:
@@ -1765,8 +1765,8 @@ apply to primitive boolean values.
 Tuples are an immutable, fixed-length collection of expressions indexed by non-negative integers:
 
 ◊ebnf['Pyret]{
-◊nt{tuple-expr}: ◊tm{◊lbrace[]} ◊nt{tuple-fields} ◊tm{◊rbrace[]}
-◊nt{tuple-fields}: ◊nt{binop-expr} (◊tm{;} ◊nt{binop-expr})* ◊tm{;}
+◊nd{tuple-expr}: ◊tm{◊lbrace[]} ◊nt{tuple-fields} ◊tm{◊rbrace[]}
+◊nd{tuple-fields}: ◊nt{binop-expr} (◊tm{;} ◊nt{binop-expr})* ◊tm{;}
 }
 
 A semicolon-separated sequence of fields enclosed in ◊tt{{}} creates a tuple. 
@@ -1985,8 +1985,8 @@ An ◊pyret{ask} expression is a different way of writing an ◊pyret{if}
 expression that can be easier to read in some cases.
 
 ◊ebnf['Pyret]{
-◊nt{ask-expr}: ◊tm{ask} [◊tm{block}] ◊tm{:} ◊nt{ask-branch}* [◊tm{|} ◊tm{otherwise:} ◊nt{block}] ◊tm{end}
-◊nt{ask-branch}: ◊tm{|} ◊nt{binop-expr} ◊tm{then:} ◊nt{block}
+◊nd{ask-expr}: ◊tm{ask} [◊tm{block}] ◊tm{:} ◊nt{ask-branch}* [◊tm{|} ◊tm{otherwise:} ◊nt{block}] ◊tm{end}
+◊nd{ask-branch}: ◊tm{|} ◊nt{binop-expr} ◊tm{then:} ◊nt{block}
 }
 
 This ask expression:
@@ -2435,8 +2435,8 @@ have the expected types and are used correctly.
 
 
 ◊ebnf['Pyret]{
-◊nt{name-ann}: ◊tmi{NAME}
-◊nt{dot-ann}: ◊tmi{NAME} ◊tm{.} ◊tmi{NAME}
+◊nd{name-ann}: ◊tmi{NAME}
+◊nd{dot-ann}: ◊tmi{NAME} ◊tm{.} ◊tmi{NAME}
           }
 Some annotations are simply names.  For example, a
 ◊seclink["s:data-decl"]{◊tt{data declaration}} binds the name of the
@@ -2513,7 +2513,7 @@ A predicate annotation is used to ◊emph{refine} the annotations
 describing the a value.  
 
 ◊ebnf['Pyret]{
-◊nt{pred-ann}: ◊nt{ann} ◊tm{%} ◊tm{(} ◊tmi{NAME} ◊tm{)}
+◊nd{pred-ann}: ◊nt{ann} ◊tm{%} ◊tm{(} ◊tmi{NAME} ◊tm{)}
           }
 
 

@@ -1,6 +1,7 @@
 export MAKE_DIR = $(CURDIR)
 
 all:
+	make clean
 	make once
 	make once
 	make once
@@ -19,6 +20,7 @@ pollenboots:
 clean:
 	find . -name compiled -type d -exec rm -fr {} \; || true
 	find . -name \*.html -delete || true
+	make cleanglob
 
 cleanglob:
 	rm -f globals.rkt _glossary.rkt
