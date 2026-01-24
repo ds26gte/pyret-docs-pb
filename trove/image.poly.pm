@@ -10,18 +10,21 @@
             #:row-properties '((center bottom-border) (top))
             (transpose (add-paras v1) (add-paras v2))])
 
-
 ◊(define (draw-pinhole x y img #:color [c 'black])
    (overlay/offset (overlay (line 10 0 c) (line 0 10 c)) x y img))
 
+◊(define counter 0)
 
+◊(define (get-counter)
+  (set! counter (+ counter 1))
+  counter)
 
 ◊(define (image-2 image-obj)
          ◊; (printf "*** image-2 ~s\n" image-obj)
          (if (= (image-width image-obj) 0)
              `(span () "")
              (let ()
-               (define file (string-append ".image-" (get-counter)))
+               (define file (format ".image-~a.png" (get-counter)))
                (save-image image-obj file)
                `(img ([src ,file])))))
 
