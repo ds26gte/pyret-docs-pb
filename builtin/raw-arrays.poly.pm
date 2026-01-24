@@ -340,7 +340,7 @@ end
   ◊function["raw-array-duplicate" #:contract (a-ftype (a-var-type "array" (RA-of "a")) (RA-of "a"))]
 
   Returns a copy of the given array, such that corresponding elements in the
-  result are ◊pyret-id["eq-fun-identical"] to those in the source array.
+  result are ◊secref["eq-fun-identical"] to those in the source array.
   
   ◊examples{
 check:
