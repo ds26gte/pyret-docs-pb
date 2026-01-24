@@ -1,5 +1,10 @@
 #lang pollen
 
+◊(define T (a-id "EqualityResult" (xref "equality" "EqualityResult")))
+
+◊(define (make-arg name type)
+         `(,name ("type" "normal") ("constract" ,type)))
+
 
 ◊docmodule["equality"]{
 
@@ -869,31 +874,33 @@ compare arbitrary values, and it's convenient to have the ability to compare
 values without raising an exception.  Since the equality of functions is
 unknown, we define the result of a total equality check with a new datatype:
 
-◊pyret-block{
-data EqualityResult:
-  | Equal
-  | NotEqual(reason :: String, value1 :: Any, value2 :: Any)
-  | Unknown(reason :: String, value1 :: Any, value2 :: Any)
-}
+◊data-spec2["EqualityResult" '()
+               (list
+                 ◊constructor-spec["EqualityResult" "Equal"]
+                 ◊constructor-spec["EqualityResult" "NotEqual"
+                                      `(,(make-arg "reason" S)
+                                         ,(make-arg "value1" A)
+                                         ,(make-arg "value2" A))]
+                 ◊constructor-spec["EqualityResult" "Unknown"
+                                      `(,(make-arg "reason" S)
+                                         ,(make-arg "value1" A)
+                                         ,(make-arg "value2" A))]
+                 )]
+
 
   ◊nested[#:style 'inset]{
-    ◊pyret-block{
-      Equal :: EqualityResult
+  ◊singleton-doc["EqualityResult" "Equal" T]
+  ◊constructor-doc["EqualityResult" "NotEqual" `(,(make-arg "reason" S)
+                                                 ,(make-arg "value1" A)
+                                                 ,(make-arg "value2" A)) T]
+  ◊constructor-doc["EqualityResult" "Unknown" `(,(make-arg "reason" S)
+                                                ,(make-arg "value1" A)
+                                                ,(make-arg "value2" A)) T]
 
-      NotEqual :: (
-        reason :: String,
-        value1 :: Any,
-        value2 :: Any
-      )
-      -> EqualityResult
+  ◊function["is-Equal" #:contract (a-arrow (p-a-var-type "val" A) B)]
+  ◊function["is-NotEqual" #:contract (a-arrow (p-a-var-type "val" A) B)]
+  ◊function["is-Unknown" #:contract (a-arrow (p-a-var-type "val" A) B)]
 
-      Unknown :: (
-        reason :: String,
-        value1 :: Any,
-        value2 :: Any
-      )
-      -> EqualityResult
-    }
   }
 
 We define three parallel functions to the equality predicates that return
@@ -901,9 +908,9 @@ We define three parallel functions to the equality predicates that return
 ◊pyret-id{NotEqual} whenever the corresponding function would, and
 ◊pyret-id{Unknown} whenever the corresponding function would throw an error:
 
-  ◊function["equal-always3" #:contract (a-arrow A A T)]
-  ◊function["equal-now3" #:contract (a-arrow A A T)]
-  ◊function["identical3" #:contract (a-arrow A A T)]
+  ◊function["equal-always3" #:contract (a-ftype (a-var-type "val1" A) (a-var-type "val2" A) T)]
+  ◊function["equal-now3" #:contract (a-ftype (a-var-type "val1" A) (a-var-type "val2" A) T)]
+  ◊function["identical3" #:contract (a-ftype (a-var-type "val1" A) (a-var-type "val2" A) T)]
 
 ◊examples{
 check:

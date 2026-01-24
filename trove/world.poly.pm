@@ -102,7 +102,7 @@ big-bang(10, on-tick(increment))
             #:return (a-app WC "a")
             #:args (list '("handler" ""))]{
     Consumes a function and returns a handler that, when passed to
-    ◊pyret-id[  "world" "big-bang"], will be called each program tick
+    ◊pyret-id["big-bang" "world"], will be called each program tick
     with the current world state.
   }
   ◊function["on-tick-n"

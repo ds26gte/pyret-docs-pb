@@ -172,7 +172,7 @@ The grammar of ◊tt{spy} statements is:
 ◊ebnf['Pyret]{
 ◊nd{spy-stmt}: spy [◊nt{expr}] : ◊nt{spy-body} end
 ◊nd{spy-body}: ◊nt{spy-field} [, ◊nt{spy-field}]*
-◊nd{spy-field}: NAME | NAME : ◊nt{binop-expr}
+◊nd{spy-field}: ◊tmi{NAME} | ◊tmi{NAME} : ◊nt{binop-expr}
 }
   
 ◊section[#:tag "s:spies:rationale"]{Rationale}

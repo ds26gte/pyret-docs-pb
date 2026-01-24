@@ -341,7 +341,7 @@ Example:
 ◊section{Provide Statements}
 
 ◊ebnf['Pyret]{
-◊nd{provide-stmt}: ◊nt{provide} ◊nt{stmt} ◊tm{end} | ◊nt{provide} ◊tm{*}
+◊nd{provide-stmt}: ◊tm{provide} ◊nt{stmt} ◊tm{end} | ◊tm{provide} ◊tm{*}
 }
 
 ◊ebnf['Pyret]{
@@ -2204,7 +2204,7 @@ rows of data:
 
 ◊subsubsection[#:tag "s:tables:extend"]{Adding Table Columns}
 ◊ebnf['Pyret]{
-◊nd{table-extend}: ◊nt{extend} ◊nt{expr} [◊tm{using} ◊nt{binding} (◊tm{,} ◊nt{binding})*] ◊tm{:} [◊nt{table-extend-field} ◊tm{,}]* ◊nt{table-extend-field} ◊tm{end}
+◊nd{table-extend}: ◊tm{extend} ◊nt{expr} [◊tm{using} ◊nt{binding} (◊tm{,} ◊nt{binding})*] ◊tm{:} [◊nt{table-extend-field} ◊tm{,}]* ◊nt{table-extend-field} ◊tm{end}
 ◊nd{table-extend-field}: ◊nt{key} [◊tm{::} ◊nt{ann}] ◊tm{:} ◊nt{binop-expr}
                   | ◊nt{key} [◊tm{::} ◊nt{ann}] ◊tm{:} ◊nt{expr} ◊tm{of} ◊tmi{NAME}
 }
@@ -2245,8 +2245,8 @@ Reactors are described in detail in ◊secref["s:reactors"].
 Pyret allows creating data definitions whose fields are mutable.  Accordingly,
 it provides syntax for accessing and modifying those fields.
 ◊ebnf['Pyret]{
-◊nt{get-bang-expr}: ◊nt{expr} ◊tm{!} ◊tmi{NAME}
-◊nt{update-expr}: ◊nt{expr} ◊tm{!} ◊tm{◊lbrace[]} ◊nt{fields} ◊tm{◊rbrace[]}
+◊nd{get-bang-expr}: ◊nt{expr} ◊tm{!} ◊tmi{NAME}
+◊nd{update-expr}: ◊nt{expr} ◊tm{!} ◊tm{◊lbrace[]} ◊nt{fields} ◊tm{◊rbrace[]}
 }
 
 By analogy with how ◊py-prod{dot-expr} accesses normal fields,

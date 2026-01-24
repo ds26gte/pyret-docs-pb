@@ -16,6 +16,7 @@ pollenboots:
 	git clone https://github.com/ds26gte/pollenboots
 	cp -p pollenboots/*.{css,js,rkt} .
 	cp -p pollenboots/template* .
+	rm -f pollenboots/*.{adoc,html,poly.pm,ptree}
 
 clean:
 	find . -name compiled -type d -exec rm -fr {} \; || true
