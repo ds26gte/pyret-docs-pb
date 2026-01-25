@@ -277,7 +277,7 @@ end
 }
 
 ◊a-method["filter"
-    #:contract (a-ftype (a-var-type "f" (p-a-ftype "a" B)) (A-of "a"))
+    #:contract (a-ftype (a-var-type "f" (p-a-arrow "a" B)) (A-of "a"))
     #:args (list (list "self" #f) (list "f" #f))
     #:return (A-of "a")]
     
@@ -298,7 +298,7 @@ end
   }
   
 ◊a-method["map"
-    #:contract (a-ftype  (a-var-type "f" (p-a-ftype "a" "b")) (A-of "b"))
+    #:contract (a-ftype  (a-var-type "f" (p-a-arrow "a" "b")) (A-of "b"))
     #:args (list (list "self" #f) (list "f" #f))
     #:return (A-of "b")]
     
@@ -323,7 +323,7 @@ end
   }
 
 ◊a-method["fold"
-    #:contract (a-ftype  (a-var-type "f" (a-ftype "b" "a" N "b")) (a-var-type "init" "b") (a-var-type "start-index" N) "b")
+    #:contract (a-ftype  (a-var-type "f" (p-a-ftype "b" "a" N "b")) (a-var-type "init" "b") (a-var-type "start-index" N) "b")
     #:args (list (list "self" #f) (list "f" #f) (list "init" #f) (list "start-index" #f))
     #:return "b"]
     

@@ -4,7 +4,7 @@
 ◊docmodule["fetch"]{
 
 ◊function["fetch"
-  #:contract (a-arrow (p-a-var-type "url" S) (E-of S S))
+  #:contract (a-ftype #:ml #t (a-var-type "url" S) (E-of S S))
   #:return (E-of S S)
   ]{
 
