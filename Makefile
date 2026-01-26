@@ -9,7 +9,6 @@ all:
 once:
 	find . -name compiled -type d -exec rm -fr {} \; || true
 	make pollenboots
-	echo $(MAKE_DIR)
 	raco pollen render index.ptree
 
 pollenboots:

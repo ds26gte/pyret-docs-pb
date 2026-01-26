@@ -1,9 +1,13 @@
 = Convert pyret-docs from Scribble to Pollen
 
-- https://github.com/ds26gte/pyret-docs-pb
+Pollen additions repo:
 - https://github.com/ds26gte/pollenboots
 
-- https://ds26gte.github.com/attic/pyret-docs-db/index.html
+Pyret docs source repo:
+- https://github.com/ds26gte/pyret-docs-pb
+
+Rendered Pyret docs:
+- https://ds26gte.github.com/pyret-docs-db/index.html
 
 == CSS, Codemirror
 
