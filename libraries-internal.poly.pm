@@ -9,9 +9,9 @@ the developer team; if you are, ask us for help directly.
 
 ◊(table-of-contents)
 
-◊include-section["builtin/raw-arrays.html"]
-◊include-section["trove/data-source.html"]
-◊include-section["trove/srcloc.html"]
-◊include-section["trove/pprint.html"]
-◊include-section["trove/s-exp.html"]
-◊include-section["trove/s-exp-structs.html"]
+◊include-section["builtin/raw-arrays.poly.pm"]
+◊include-section["trove/data-source.poly.pm"]
+◊include-section["trove/srcloc.poly.pm"]
+◊include-section["trove/pprint.poly.pm"]
+◊include-section["trove/s-exp.poly.pm"]
+◊include-section["trove/s-exp-structs.poly.pm"]
