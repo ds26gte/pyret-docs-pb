@@ -21,8 +21,8 @@
     <title>◊(doc-title doc)</title>
   </head>
   <body>
+    <form class="searchform" id="searchformid"><input class="searchbox" id="searchbox" type="text" tabindex="1" placeholder="...search manuals..." title="Enter a search string to search the manuals" onkeypress="return DoSearchKey(event, this, &quot;9.1&quot;, &quot;&quot;);"/></form>
     <div class="container">
-      <form class="searchform"><input class="searchbox" id="searchbox" type="text" tabindex="1" placeholder="...search manuals..." title="Enter a search string to search the manuals" onkeypress="return DoSearchKey(event, this, &quot;9.1&quot;, &quot;&quot;);"/></form>
     ◊(->html doc)
     ◊(define top-dir (point-to-project-root here))
     ◊(define prev-page (prefix-dir top-dir (previous here)))
